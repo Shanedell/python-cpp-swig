@@ -1,0 +1,10 @@
+.vscode
+
+# Generated binaries
+*.o
+*.dylib
+*.so
+
+# Generate python files
+__pycache__
+.pytest_cache
