@@ -1,5 +1,7 @@
 # SWIG Python and C++ Example
 
+![Build Status](https://github.com/Shanedell/python-cpp-swig/workflows/Test%20Pycpp%20Module/badge.svg)
+
 This repo is an example of bindings created via SWIG between C++ example. Code can
 be used for both Mac and Linux.
 
