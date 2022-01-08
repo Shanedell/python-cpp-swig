@@ -39,6 +39,12 @@ Works for both MacOS and Linux.
 g++ -shared $(python3-config --ldflags) -o pycpp/_pycpp.so pycpp/pycpp.o pycpp/pycpp_wrap.o
 ```
 
+### Test library
+
+```bash
+pipenv run test -v
+```
+
 ## Compiling python bindings - Auto
 
 Using the `gen_lib` script you can easily generate the swig bindings, generate the c++ binary file and the library file.
