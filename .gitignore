@@ -1,6 +1,11 @@
 .vscode
 
+# Swig Generated files
+pycpp/pycpp.py
+pycpp/pycpp_wrap.cxx
+
 # Generated binaries
+*.dll
 *.o
 *.dylib
 *.so

@@ -1,38 +1,5 @@
-#!/usr/bin/env python3
+#!/usr/bin/env bash
 
-import subprocess as sp
-import argparse
-
-
-def update_swig_bindings():
-    sp.run(
-        "swig -v -python -c++ -outdir pycpp pycpp/pycpp.i",
-        shell=True,
-    )
-
-
-def gen_cpp_binary():
-    sp.run(
-        "cd pycpp && g++ -std=c++11 -fPIC -c pycpp.cpp pycpp_wrap.cxx $(python3-config --include) && cd ../",
-        shell=True,
-    )
-    
-
-def gen_library_file():
-    sp.run(
-        "g++ -shared $(python3-config --ldflags) -o pycpp/_pycpp.so pycpp/pycpp.o pycpp/pycpp_wrap.o",
-        shell=True,
-    )
-
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-s", "--gen_swig", action='store_true', help="Update SWIG bindings need updated")
-    args = parser.parse_args()
-    
-    if args.gen_swig:
-        update_swig_bindings()
-
-    gen_cpp_binary()
-    gen_library_file()
-    
+swig -v -python -c++ -outdir pycpp pycpp/pycpp.i
+cd pycpp && g++ -std=c++11 -fPIC -c pycpp.cpp pycpp_wrap.cxx $(python3-config --include) && cd ../
+g++ -shared $(python3-config --ldflags) -o pycpp/_pycpp.so pycpp/pycpp.o pycpp/pycpp_wrap.o
