@@ -27,7 +27,7 @@ Works for both MacOS and Linux.
 
 ```bash
 cd pycpp
-g++ -std=c++11 -fPIC -c pycpp.cpp pycpp_wrap.cxx $(python3-config --include)
+g++ -std=c++11 -fPIC -c pycpp.cpp pycpp_wrap.cxx $(python3-config --includes)
 cd ../
 ```
 
@@ -47,4 +47,9 @@ pipenv run test -v
 
 ## Compiling python bindings - Auto
 
-Using the `gen_lib` script you can easily generate the swig bindings, generate the c++ binary file and the library file.
+Two Options:
+
+- 1.) You can run the `gen_lib` file locally and everything will be built
+- 2.) Run `docker-compose up -d --build`
+  - Creates a container that builds all the bindings, creates the c++ binary and creates the library file
+  - Creates another container once the build one finishes that runs the tests

@@ -1,0 +1,16 @@
+version: "3.5"
+
+services:
+  module-build:
+    build:
+      context: .
+      dockerfile: .
+    image: python-cpp-mod:local
+    container_name: python_cpp_mod_build
+
+  module-test:
+    image: python-cpp-mod:local
+    container_name: python_cpp_mod_test
+    depends_on:
+      - module-build
+    command: pipenv run test -v

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 swig -v -python -c++ -outdir pycpp pycpp/pycpp.i
-cd pycpp && g++ -std=c++11 -fPIC -c pycpp.cpp pycpp_wrap.cxx $(python3-config --include) && cd ../
+cd pycpp && g++ -std=c++11 -fPIC -c pycpp.cpp pycpp_wrap.cxx $(python3-config --includes) && cd ../
 g++ -shared $(python3-config --ldflags) -o pycpp/_pycpp.so pycpp/pycpp.o pycpp/pycpp_wrap.o
